@@ -80,7 +80,8 @@ for (let i = 0; i < 100; i++) {
 			textColor: "#000000",
 			backgroundColor: "none",
             value: "",
-            formula: ""
+            formula: "",
+            children: []
 		};
 		row.push(cellObj);
 	}
@@ -135,6 +136,8 @@ for (let i = 0; i < gridCells.length; i++) {
 		}
 	});
 }
+gridCells[0].focus();
+addressField.value = "A1";
 
 // Menu Container
 function getIds(addr) {

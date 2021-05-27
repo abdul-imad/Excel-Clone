@@ -166,7 +166,7 @@ option[value="cursive"] {
 }
 
 .formula-container {
-    height: 2rem;
+    height: 2.5rem;
     /* background-color: lightcoral; */
     display: flex;
     align-items: center;
@@ -191,7 +191,7 @@ option[value="cursive"] {
 
 
 .grid-container {
-    height: calc(100vh - (4rem + 2rem + 2.5rem));
+    height: calc(100vh - (4rem + 2rem + 3rem));
     /* background-color: lightcyan; */
     overflow: auto;
     position: relative;
@@ -200,7 +200,7 @@ option[value="cursive"] {
 .box {
     width: 2rem;
     height: 1.5rem;
-    border: 1px solid;
+    border: 1px solid #bebebe;
     display: grid;
     place-items: center;
 }

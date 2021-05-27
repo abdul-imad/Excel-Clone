@@ -3,6 +3,7 @@ for (let i = 0; i < gridCells.length; i++) {
 	gridCells[i].addEventListener("blur", () => {
 		let cellData = gridCells[i].innerText;
 		let { rid, cid } = getRIDCIDfromAddress(addressField.value);
+        console.log(addressField.value);
 		let cellObj = sheetDB[rid][cid];
 		cellObj.value = cellData;
 		updateChildren(cellObj);
@@ -51,8 +52,8 @@ function storeChildren(address, formula) {
 		let ascii = formulaTokens[i].charCodeAt(0);
 		if (ascii >= 65 && ascii <= 90) {
 			let { rid, cid } = getRIDCIDfromAddress(formulaTokens[i]);
-			let parentObj = sheetDB[rid][cid];
-			parentObj.children.push(address);
+			cellObj = sheetDB[rid][cid];
+			cellObj.children.push(address);
 		}
 	}
 }
@@ -65,7 +66,14 @@ function updateChildren(cellObj) {
         let childObj = sheetDB[rid][cid];
         let formula = childObj.formula;
         let value = evaluateFormula(formula);
-        setCell(value, formula);
+        setUpdatedCell(value, formula, rid, cid);
         updateChildren(childObj);
     }
+}
+
+function setUpdatedCell(value, formula, rid, cid) {
+	let uiCellElement = document.querySelector(`.cell[rid="${rid}"][cid="${cid}"]`);
+    uiCellElement.innerText = value;
+	sheetDB[rid][cid].value = value;
+	sheetDB[rid][cid].formula = formula;
 }

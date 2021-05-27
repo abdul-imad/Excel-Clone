@@ -134,6 +134,13 @@ for (let i = 0; i < gridCells.length; i++) {
 			// center active
 			centerBtn.classList.add("alignment-active");
 		}
+
+        if(cellObj.formula){
+            formulaBar.value = cellObj.formula;
+        }
+        else{
+            formulaBar.value = "";
+        }
 	});
 }
 gridCells[0].focus();

@@ -5,6 +5,15 @@ for (let i = 0; i < gridCells.length; i++) {
 		let { rid, cid } = getRIDCIDfromAddress(addressField.value);
         console.log(addressField.value);
 		let cellObj = sheetDB[rid][cid];
+
+        if(cellObj.value == cellData){
+            return ;
+        }
+        if(cellObj.formula){
+            removeFormula(cellObj, addressField.value);
+            formulaBar.value = "";
+        }
+
 		cellObj.value = cellData;
 		updateChildren(cellObj);
 	});
@@ -13,6 +22,11 @@ for (let i = 0; i < gridCells.length; i++) {
 formulaBar.addEventListener("keydown", (e) => {
 	if (e.key == "Enter" && formulaBar.value) {
 		let currFormula = formulaBar.value;
+        let { rid, cid } = getRIDCIDfromAddress(addressField.value);
+        let cellObject = sheetDB[rid][cid];
+        if(currFormula != cellObj.formula){
+            removeFormula(cellObj, addressField.value);
+        }
 		let calcValue = evaluateFormula(currFormula);
 		setCell(calcValue, currFormula);
 		let address = addressField.value;
@@ -76,4 +90,22 @@ function setUpdatedCell(value, formula, rid, cid) {
     uiCellElement.innerText = value;
 	sheetDB[rid][cid].value = value;
 	sheetDB[rid][cid].formula = formula;
+}
+
+function removeFormula(cellObj, address){
+    let formula = cellObj.formula;
+    let formulaTokens = formula.split(" ");
+	// '(' 'A1' '+' 'B2' ')'
+	for (let i = 0; i < formulaTokens.length; i++) {
+		// for every token
+		let ascii = formulaTokens[i].charCodeAt(0);
+		if (ascii >= 65 && ascii <= 90) {
+			let { rid, cid } = getRIDCIDfromAddress(formulaTokens[i]);
+			let parentObj = sheetDB[rid][cid];
+			let idx = parentObj.children.indexOf(address);
+            parentObj.children.splice(idx, 1);
+		}
+	}
+
+    cellObj.formula = "";
 }

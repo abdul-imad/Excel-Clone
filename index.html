@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+			rel="stylesheet"
+		/>
+
+		<link rel="stylesheet" href="style.css" />
+
+		<title>Excel Clone</title>
+	</head>
+	<body>
+		<div class="menu-container">
+			<div class="excel-logo">
+				<img
+					src="https://www.logo.wine/a/logo/Microsoft_Excel/Microsoft_Excel-Logo.wine.svg"
+					alt=""
+					class="logo"
+				/>
+			</div>
+			<div class="parent-menu">
+				<div class="menu">
+                    <input type="file" class="inputBtn" accept=".json" style="display: none;" >
+					<div class="new">New</div>
+					<div class="open" onclick="openFiles()">Open</div>
+					<div class="save">Save</div>
+				</div>
+				<hr />
+				<div class="menu-features">
+					<select class="fonts brt">
+						<option value="Arial">Arial</option>
+						<option value="Cambria">Cambria</option>
+						<option value="Georgia">Georgia</option>
+						<option value="monospace">monospace</option>
+						<option selected value="sans-serif">sans-serif</option>
+						<option value="fantasy">fantasy</option>
+						<option value="Calibri">Calibri</option>
+						<option value="Courier New">Courier New</option>
+						<option value="Lucida Sans">Lucida Sans</option>
+						<option value="cursive">cursive</option>
+					</select>
+					<select class="font-size brt">
+						
+						<option value="10">10</option>
+						<option value="12">12</option>
+						<option value="14">14</option>
+						<option value="16" selected>16</option>
+						<option value="18">18</option>
+						<option value="20">20</option>
+					</select>
+					<div class="font-style brt">
+						<div class="bold biu">
+							<i class="fas fa-bold"></i>
+						</div>
+						<div class="italic biu">
+							<i class="fas fa-italic"></i>
+						</div>
+						<div class="underline biu">
+							<i class="fas fa-underline"></i>
+						</div>
+					</div>
+					<div class="colors">
+                        <input type="color" id="font-color-btn" style="display: none;" class="color" title="Change Font Color">
+                        <label class="color" id="hoverOnFontColorBtn" style="cursor: pointer" for="fontColorButton"  onclick=openFontColor()>
+                            <i class="fas fa-font""></i>
+                        </label>
+                        <input type="color" id="bg-color-btn" style="display: none;" class="bg-color" value="#ffffff" title="Change bg Color">
+                        <label class="bg-color" id="hoverOnCellColorBtn" style="cursor: pointer" for="bgColorButton"  onclick=openBgColor()>
+                            <i class="fas fa-fill-drip" ></i>
+                        </label>
+                        
+                    </div>
+
+
+					<div class="brt" style="width: 10px"></div>
+
+
+					<div class="alignment brt">
+						<i class="fa fa-align-left left align" aria-hidden="true"></i>
+						<i class="fa fa-align-center center align" aria-hidden="true"></i>
+						<i class="fa fa-align-right right align" aria-hidden="true"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="formula-container">
+			<input type="text" class="address-feild" />
+			<input type="text" class="formula-feild" />
+		</div>
+		<div class="grid-container">
+			<div class="left-box box"></div>
+			<div class="top-row"></div>
+			<div class="left-col num"></div>
+			<div class="grid"></div>
+		</div>
+		<div class="sheets-container">
+			<div class="add_sheets_btn-container">
+				<i class="fa fa-plus" aria-hidden="true"></i>
+			</div>
+			<div class="sheets-list">
+				<div class="sheet active" idx="0">Sheet 1</div>
+			</div>
+		</div>
+
+		<script src="app.js"></script>
+		<script src="grid.js"></script>
+        <script src="newOpenSave.js"></script>
+        <script src="formula.js"></script>
+
+        <script>
+            function openFiles() {
+                document.querySelector(".inputBtn").click();
+            }
+
+            function openFontColor() {
+                document.querySelector("#font-color-btn").click();
+            }
+
+            function openBgColor(){
+                document.querySelector("#bg-color-btn").click();
+            }
+            
+        </script>
+	</body>
+</html>

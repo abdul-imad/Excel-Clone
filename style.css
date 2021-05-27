@@ -1,0 +1,330 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.menu-container {
+    min-height: 4rem;
+    display: flex;
+    font-family: geo;
+    background-color: #fff;
+}
+
+.excel-logo {
+    display: grid;
+    place-items: center;
+}
+
+.logo {
+    width: 4rem;
+    height: 3rem;
+}
+
+.menu {
+    color: #000;
+    display: flex;
+    width: calc(100vw - 4rem);
+}
+
+.menu>* {
+    padding-top: 0.5rem;
+    margin-right: 1.5rem;
+    cursor: pointer;
+}
+
+.brt {
+    border-right: 2px solid #b8b8b8;
+}
+
+p {
+    cursor: pointer;
+}
+
+select {
+    border: none;
+    cursor: pointer;
+}
+
+select:hover{
+    background-color: lightgray;
+}
+
+.menu-features {
+    display: flex;
+}
+
+.fonts {
+    margin-right: 1rem;
+}
+
+option {
+    padding: 5px;
+    background-color: #fff;
+}
+
+option[value="Arial"] {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+option[value="Cambria"] {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+option[value="Georgia"] {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+option[value="monospace"] {
+    font-family: monospace;
+}
+
+option[value="sans-serif"] {
+    font-family: sans-serif;
+}
+
+option[value="fantasy"] {
+    font-family: fantasy;
+}
+
+option[value="Calibri"] {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+option[value="Courier New"] {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+option[value="Lucida Sans"] {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+option[value="cursive"] {
+    font-family: cursive;
+}
+
+
+.font-style {
+    display: flex;
+    padding: 0 10px;
+}
+
+.biu {
+    width: 2.5rem;
+    cursor: pointer;
+    height: inherit;
+    padding: 5px;
+    margin-right: 2px;
+    /* margin: 0.5px; */
+    display: grid;
+    place-items: center;
+}
+
+.biu:hover {
+    background-color: lightgray;
+}
+
+.biu-active-btn{
+    background-color: lightgray;
+}
+
+.colors{
+    display: grid;
+    grid-template-columns: 2rem 2rem;
+    place-items: center;
+}
+
+.color,
+.bg-color {
+    margin-left: 0.5rem;
+    padding: 0;
+    border: none;
+    /* background-color: transparent; */
+}
+
+.alignment {
+    margin-left: 1rem;
+    height: inherit;
+}
+
+.alignment>* {
+    font-size: 20px;
+    width: 2rem;
+    color: #505050;
+}
+
+.alignment>*:hover {
+    /* color: #000; */
+    cursor: pointer;
+}
+
+.alignment-active{
+    color: #000;
+    font-size: 22px;
+}
+
+.formula-container {
+    height: 2rem;
+    /* background-color: lightcoral; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.formula-container>* {
+    height: 70%;
+}
+
+.address-feild {
+    width: 4rem;
+    display: grid;
+    font-weight: bold;
+    place-items: center;
+}
+
+.formula-feild {
+    width: calc(100vw - 6rem);
+}
+
+
+
+.grid-container {
+    height: calc(100vh - (4rem + 2rem + 2.5rem));
+    /* background-color: lightcyan; */
+    overflow: auto;
+    position: relative;
+}
+
+.box {
+    width: 2rem;
+    height: 1.5rem;
+    border: 1px solid;
+    display: grid;
+    place-items: center;
+}
+
+.left-box {
+    background-color: lightgrey;
+    border: none;
+}
+
+.top-row {
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    background-color: lightgrey;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.each-top-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell {
+    min-width: 5rem;
+    min-height: 1.5rem;
+    border: 1px solid #c3c3c3;
+    font-size: 16px;
+    /* display: grid;
+    place-items: center; */
+}
+
+.cell:hover {
+    cursor: cell;
+}
+
+.row {
+    display: flex;
+}
+
+.grid {
+    /* height: 2rem; */
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+    /* background-color: lightcyan; */
+}
+
+::-webkit-scrollbar {
+    position: absolute;
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #c3c3c3;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+}
+
+/* .grid-container::-webkit-scrollbar {
+    display: none;
+}
+
+.grid-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+} */
+
+.sheets-container {
+    height: 2rem;
+    background-color: lightgrey;
+    display: flex;
+}
+
+.add_sheets_btn-container {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    color: #00ac00;
+    font-size: 20px;
+    border: 1px solid;
+    height: 100%;
+    cursor: pointer;
+}
+
+.sheets-list {
+    width: calc(100vw - 3rem);
+    height: 100%;
+    border: 1px solid;
+    display: flex;
+    overflow: auto;
+}
+
+.sheets-list::-webkit-scrollbar {
+    display: none;
+}
+
+.sheets-list {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.sheet {
+    min-width: 5rem;
+    border: 1px solid;
+    height: 100%;
+    cursor: pointer;
+
+}
+
+.active {
+    background-color: #fff;
+}

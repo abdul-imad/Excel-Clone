@@ -99,20 +99,17 @@ addSheetsBtn.addEventListener("click", () => {
 
 function sheetClick(e) {
 	let sheet = e.currentTarget;
-    // console.log(sheet.getAttribute("idx"));
 	allSheets = document.querySelectorAll(".sheet");
 	for (let i = 0; i < allSheets.length; i++) {
 		allSheets[i].classList.remove("active");
 	}
 	sheet.classList.add("active");
 	let idx = sheet.getAttribute("idx");
-	// console.log(idx);
 	if (!sheetArr[idx]) {
 		createSheet();
 	}
 	sheetDB = sheetArr[idx];
     if(sheetArr[idx])
-    console.log(sheetDB)
 	setUI();
 }
 
@@ -174,7 +171,6 @@ window.addEventListener("load", () => {
     setTimeout(() => {
         pageLoadImg.remove();
     },1000);
-    console.log("pae load")
 })
 
 // reading cell address on clicking and displaying on address field
@@ -266,7 +262,6 @@ fontSizeElem.addEventListener("change", function () {
     let cid = uiCellElement.getAttribute("cid");
     let cellObj = sheetDB[rid][cid];
     cellObj.fontSize = val;
-    // console.log(cellObj.fontSize);
 	uiCellElement.style.fontSize = val + "px";
 });
 
@@ -369,7 +364,6 @@ for (let i = 0; i < fontFormat.length; i++) {
 		}
 	});
 }
-// console.log("hefffnnnllo")
 
 fontColorInputBtn.addEventListener("change", function() {
     let uiCellElement = findUICellElement();

@@ -1,9 +1,7 @@
 // Storing the cell data in sheetDB
 for (let i = 0; i < gridCells.length; i++) {
 	gridCells[i].addEventListener("blur", () => {
-        // console.log(sheetDB);
 		let cellData = gridCells[i].innerText;
-        console.log("formula")
 		let { rid, cid } = getRIDCIDfromAddress(addressField.value);
 		let cellObj = sheetDB[rid][cid];
 
@@ -19,10 +17,7 @@ for (let i = 0; i < gridCells.length; i++) {
         }
 
 		sheetDB[rid][cid].value = cellData;
-        console.log(cellObj.value);
-        // console.log(sheetDB)
 		updateChildren(cellObj);
-        console.log(sheetDB);
 	});
 }
 

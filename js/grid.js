@@ -10,13 +10,11 @@ const charStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const fontElem = document.querySelector(".fonts");
 const fontSizeElem = document.querySelector(".font-size");
 
-
 const boldBtn = document.querySelector(".bold");
 const italicBtn = document.querySelector(".italic");
 const underlineBtn = document.querySelector(".underline");
 
 const fontColorInputBtn = document.querySelector("#font-color-btn");
-// console.log(fontColorInputBtn);
 const cellColorInputBtn = document.querySelector("#bg-color-btn");
 const fontColorBtn = document.querySelector("#hoverOnFontColorBtn");
 const cellColorBtn = document.querySelector("#hoverOnCellColorBtn");
@@ -178,7 +176,6 @@ window.addEventListener("load", () => {
     },1000);
     console.log("pae load")
 })
-
 
 // reading cell address on clicking and displaying on address field
 let gridCells = document.querySelectorAll(".grid .cell");

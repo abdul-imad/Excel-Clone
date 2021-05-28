@@ -29,6 +29,7 @@ const allAlignBtns = document.querySelectorAll(".align");
 
 const formulaBar = document.querySelector(".formula-feild");
 
+const pageLoadImg = document.querySelector(".page-load");
 
 
 // creating top row A-Z
@@ -170,6 +171,13 @@ function setUI() {
         }
 	}
 }
+
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        pageLoadImg.remove();
+    },1000);
+    console.log("pae load")
+})
 
 
 // reading cell address on clicking and displaying on address field

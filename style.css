@@ -6,6 +6,13 @@ body {
     margin: 0;
 }
 
+.loadImg{
+    position: absolute;
+    z-index: 999999999999999999;
+    height: 100%;
+    width:100%;
+}
+
 .menu-container {
     min-height: 4rem;
     display: flex;

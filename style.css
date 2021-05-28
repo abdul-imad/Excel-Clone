@@ -30,9 +30,15 @@ body {
 }
 
 .menu>* {
-    padding-top: 0.5rem;
-    margin-right: 1.5rem;
+    padding: 8px 12px;
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     cursor: pointer;
+}
+
+.menu>*:hover{
+    background-color: lightgreen;
 }
 
 .brt {
@@ -48,8 +54,8 @@ select {
     cursor: pointer;
 }
 
-select:hover{
-    background-color: lightgray;
+select:hover {
+    background-color: lightgreen;
 }
 
 .menu-features {
@@ -117,22 +123,21 @@ option[value="cursive"] {
     height: inherit;
     padding: 5px;
     margin-right: 2px;
-    /* margin: 0.5px; */
     display: grid;
     place-items: center;
 }
 
 .biu:hover {
-    background-color: lightgray;
+    color: green;
 }
 
-.biu-active-btn{
-    background-color: lightgray;
+.biu-active-btn {
+    background-color: lightgreen;
 }
 
-.colors{
+.colors {
     display: grid;
-    grid-template-columns: 2rem 2rem;
+    grid-template-columns: 2.5rem 2.5rem;
     place-items: center;
 }
 
@@ -141,7 +146,6 @@ option[value="cursive"] {
     margin-left: 0.5rem;
     padding: 0;
     border: none;
-    /* background-color: transparent; */
 }
 
 .alignment {
@@ -156,18 +160,16 @@ option[value="cursive"] {
 }
 
 .alignment>*:hover {
-    /* color: #000; */
     cursor: pointer;
 }
 
-.alignment-active{
-    color: #000;
+.alignment-active {
+    color: green;
     font-size: 22px;
 }
 
 .formula-container {
     height: 2.5rem;
-    /* background-color: lightcoral; */
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -191,8 +193,7 @@ option[value="cursive"] {
 
 
 .grid-container {
-    height: calc(100vh - (4rem + 2rem + 3rem));
-    /* background-color: lightcyan; */
+    height: calc(100vh - (4rem + 2rem + 4rem));
     overflow: auto;
     position: relative;
 }
@@ -202,11 +203,12 @@ option[value="cursive"] {
     height: 1.5rem;
     border: 1px solid #bebebe;
     display: grid;
+    background-color: lightgray;
     place-items: center;
 }
 
 .left-box {
-    background-color: lightgrey;
+    background-color: lightgray;
     border: none;
 }
 
@@ -214,7 +216,7 @@ option[value="cursive"] {
     position: absolute;
     top: 0;
     left: 2rem;
-    background-color: lightgrey;
+    background-color: lightgray;
     height: 1.5rem;
     display: flex;
     justify-content: center;
@@ -232,12 +234,16 @@ option[value="cursive"] {
     min-height: 1.5rem;
     border: 1px solid #c3c3c3;
     font-size: 16px;
-    /* display: grid;
-    place-items: center; */
 }
 
 .cell:hover {
     cursor: cell;
+    border: 2px solid lightgreen;
+}
+
+[contenteditable]:focus {
+    outline: 0px solid transparent;
+    border: 2px solid green;
 }
 
 .row {
@@ -245,43 +251,20 @@ option[value="cursive"] {
 }
 
 .grid {
-    /* height: 2rem; */
     position: absolute;
     top: 1.5rem;
     left: 2rem;
-    /* background-color: lightcyan; */
+    overflow: auto;
 }
 
-::-webkit-scrollbar {
-    position: absolute;
-    width: 12px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-
-    border-radius: 10px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #c3c3c3;
-    border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #b3b3b3;
-}
-
-/* .grid-container::-webkit-scrollbar {
+.grid-container::-webkit-scrollbar {
     display: none;
 }
 
 .grid-container {
     -ms-overflow-style: none;
     scrollbar-width: none;
-} */
+}
 
 .sheets-container {
     height: 2rem;
@@ -295,7 +278,6 @@ option[value="cursive"] {
     width: 3rem;
     color: #00ac00;
     font-size: 20px;
-    border: 1px solid;
     height: 100%;
     cursor: pointer;
 }
@@ -303,7 +285,7 @@ option[value="cursive"] {
 .sheets-list {
     width: calc(100vw - 3rem);
     height: 100%;
-    border: 1px solid;
+    border-left: 1px solid rgb(70, 70, 70);
     display: flex;
     overflow: auto;
 }
@@ -319,12 +301,25 @@ option[value="cursive"] {
 
 .sheet {
     min-width: 5rem;
-    border: 1px solid;
+    border-right: 1px solid rgb(70, 70, 70);
     height: 100%;
     cursor: pointer;
+    color: rgba(0, 0, 0, 0.644);
+    text-align: center;
+    padding-top: 5px;
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
+.sheet:hover {
+    font-weight: 800;
 }
 
 .active {
+    border: none;
+    border-right: 1px solid rgb(70, 70, 70);
+    border-bottom: 3px solid green;
     background-color: #fff;
+    font-weight: 800;
+    color: green;
 }

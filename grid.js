@@ -93,7 +93,8 @@ addSheetsBtn.addEventListener("click", () => {
     // 3d array -> sheetDB
     // current db sheet change
     sheetDB = sheetArr[lastIdx+1];
-    // setUI(sheetDB);
+    setUI();
+
 	newSheet.addEventListener("click", sheetClick);
 });
 
@@ -109,12 +110,11 @@ function sheetClick(e) {
 	// console.log(idx);
 	if (!sheetArr[idx]) {
 		createSheet();
-
 	}
 	sheetDB = sheetArr[idx];
-
-    console.log(sheetDB);
-	setUI(sheetDB);
+    if(sheetArr[idx])
+    console.log(sheetDB)
+	setUI();
 }
 
 function createSheet(){
@@ -130,13 +130,20 @@ function createSheet(){
                 fontSize: "16",
                 align: "left",
                 textColor: "#000000",
-                backgroundColor: "none",
+                backgroundColor: "#ffffff",
                 value: "",
                 formula: "",
                 children: []
             };
             let elem = document.querySelector(`.grid .cell[rid='${i}'][cid='${j}']`);
-            // console.log(elem.innerText);
+            elem.style.fontWeight = "normal";
+            elem.style.fontStyle = "normal";
+            elem.style.textDecoration = "none";
+            elem.style.fontFamily = "sans-serif";
+            elem.style.fontSize = "16px";
+            elem.style.textAlign = "left";
+            elem.style.color = "black";
+            elem.style.backgroundColor = "white";
             elem.innerText = "";
             row.push(cellObj);
         }
@@ -144,19 +151,22 @@ function createSheet(){
     }
     sheetArr.push(newDB);
 }
-// createSheet();
 console.table(sheetArr)
 
-function setUI(sheetDB) {
+function setUI() {
 	for (let i = 0; i < 100; i++) {
 		for (let j = 0; j < 26; j++) {
-            let currCell = document.querySelector(`.grid .cell[rid='${i}'][cid='${j}']`);
-            let value = sheetDB[i][j].value;
-            if(sheetDB[i][j].value){
-                console.log(sheetDB[i][j].value);
-            }
-
-            currCell.innerText = value;
+            let cell = document.querySelector(`.grid .cell[rid='${i}'][cid='${j}']`);
+            let cellData = sheetDB[i][j];
+            cell.style.fontWeight = cellData.bold;
+			cell.style.fontStyle =cellData.italic;
+			cell.style.textDecoration =cellData.underline;
+			cell.style.fontFamily = cellData.font;
+			cell.style.fontSize = cellData.fontSize + "px";
+			cell.style.textAlign = cellData.align;
+			cell.innerText = cellData.value;
+			cell.style.color = cellData.textColor;
+			cell.style.backgroundColor = cellData.backgroundColor;
         }
 	}
 }
@@ -170,6 +180,9 @@ for (let i = 0; i < gridCells.length; i++) {
 		let cid = Number(gridCells[i].getAttribute("cid"));
 		addressField.value = `${charStr[cid]}${rid + 1}`;
 		let cellObj = sheetDB[rid][cid];
+
+        //value
+
 
         // font family
         fontElem.value = cellObj.font;

@@ -13,6 +13,9 @@ for (let i = 0; i < gridCells.length; i++) {
             removeFormula(cellObj, addressField.value);
             formulaBar.value = "";
         }
+        if(cellObj.value  && cellObj.formula == ""){
+            updateChildren(cellObj);
+        }
 
 		cellObj.value = cellData;
 		updateChildren(cellObj);
@@ -23,14 +26,16 @@ formulaBar.addEventListener("keydown", (e) => {
 	if (e.key == "Enter" && formulaBar.value) {
 		let currFormula = formulaBar.value;
         let { rid, cid } = getRIDCIDfromAddress(addressField.value);
-        let cellObject = sheetDB[rid][cid];
+        let cellObj = sheetDB[rid][cid];
         if(currFormula != cellObj.formula){
             removeFormula(cellObj, addressField.value);
         }
+
 		let calcValue = evaluateFormula(currFormula);
 		setCell(calcValue, currFormula);
 		let address = addressField.value;
 		storeChildren(address, currFormula);
+        updateChildren(cellObj);
 	}
 });
 
@@ -43,6 +48,9 @@ function evaluateFormula(formula) {
 		if (ascii >= 65 && ascii <= 90) {
 			let { rid, cid } = getRIDCIDfromAddress(formulaTokens[i]);
 			let value = sheetDB[rid][cid].value;
+            if(value == ""){
+                value = "0";
+            }
 			formulaTokens[i] = value; // put cell value in formula token
 		}
 	}

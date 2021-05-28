@@ -64,29 +64,103 @@ for (let i = 0; i < 100; i++) {
 	}
 	grid.appendChild(rowCell);
 }
-
 // creating sheetDB
-let sheetDB = [];
-for (let i = 0; i < 100; i++) {
-	let row = [];
-	for (let j = 0; j < 26; j++) {
-		cellObj = {
-			bold: "normal",
-			italic: "normal",
-			underline: "none",
-			font: "sans-serif",
-			fontSize: "16",
-			align: "left",
-			textColor: "#000000",
-			backgroundColor: "none",
-            value: "",
-            formula: "",
-            children: []
-		};
-		row.push(cellObj);
+let addSheetsBtn = document.querySelector(".add_sheets_btn-container");
+let sheetList = document.querySelector(".sheets-list");
+let firstSheet = document.querySelector(".sheet");
+let sheetArr = [];
+
+let sheetDB;
+
+firstSheet.addEventListener("click", sheetClick);
+firstSheet.click();
+
+addSheetsBtn.addEventListener("click", () => {
+	let allSheets = document.querySelectorAll(".sheet");
+	let lastSheet = allSheets[allSheets.length - 1];
+	let lastIdx = lastSheet.getAttribute("idx");
+	lastIdx = Number(lastIdx);
+	let newSheet = document.createElement("div");
+	newSheet.setAttribute("class", "sheet");
+	newSheet.setAttribute("idx", `${lastIdx + 1}`);
+	newSheet.innerText = `Sheet ${lastIdx + 2}`;
+	sheetList.appendChild(newSheet);
+	for (let i = 0; i < allSheets.length; i++) {
+		allSheets[i].classList.remove("active");
 	}
-	sheetDB.push(row);
+	newSheet.classList.add("active");
+    createSheet();
+    // 3d array -> sheetDB
+    // current db sheet change
+    sheetDB = sheetArr[lastIdx+1];
+    // setUI(sheetDB);
+	newSheet.addEventListener("click", sheetClick);
+});
+
+function sheetClick(e) {
+	let sheet = e.currentTarget;
+    // console.log(sheet.getAttribute("idx"));
+	allSheets = document.querySelectorAll(".sheet");
+	for (let i = 0; i < allSheets.length; i++) {
+		allSheets[i].classList.remove("active");
+	}
+	sheet.classList.add("active");
+	let idx = sheet.getAttribute("idx");
+	// console.log(idx);
+	if (!sheetArr[idx]) {
+		createSheet();
+
+	}
+	sheetDB = sheetArr[idx];
+
+    console.log(sheetDB);
+	setUI(sheetDB);
 }
+
+function createSheet(){
+    let newDB = [];
+    for (let i = 0; i < 100; i++) {
+        let row = [];
+        for (let j = 0; j < 26; j++) {
+            cellObj = {
+                bold: "normal",
+                italic: "normal",
+                underline: "none",
+                font: "sans-serif",
+                fontSize: "16",
+                align: "left",
+                textColor: "#000000",
+                backgroundColor: "none",
+                value: "",
+                formula: "",
+                children: []
+            };
+            let elem = document.querySelector(`.grid .cell[rid='${i}'][cid='${j}']`);
+            // console.log(elem.innerText);
+            elem.innerText = "";
+            row.push(cellObj);
+        }
+        newDB.push(row);
+    }
+    sheetArr.push(newDB);
+}
+// createSheet();
+console.table(sheetArr)
+
+function setUI(sheetDB) {
+	for (let i = 0; i < 100; i++) {
+		for (let j = 0; j < 26; j++) {
+            let currCell = document.querySelector(`.grid .cell[rid='${i}'][cid='${j}']`);
+            let value = sheetDB[i][j].value;
+            if(sheetDB[i][j].value){
+                console.log(sheetDB[i][j].value);
+            }
+
+            currCell.innerText = value;
+        }
+	}
+}
+
 
 // reading cell address on clicking and displaying on address field
 let gridCells = document.querySelectorAll(".grid .cell");
